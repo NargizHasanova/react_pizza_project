@@ -1,0 +1,198 @@
+[
+    {
+        "id":1,
+        "categorie":"Куриные",
+        "name":"Чикен Барбекю",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg"
+    },
+    {
+        "id":2,
+        "categorie":"Куриные",
+        "name":"Чикен Рэнч",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/2ffc31bb-132c-4c99-b894-53f7107a1441.jpg"           
+    },
+    {
+        "id":3,
+        "categorie":"Куриные",
+        "name":"Чикен Чизбургер",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/6652fec1-04df-49d8-8744-232f1032c44b.jpg"           
+    },
+    {
+        "id":4,
+        "categorie":"Куриные",
+        "name":"Чикен Пармезан",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/af553bf5-3887-4501-b88e-8f0f55229429.jpg"           
+    },
+    {
+        "id":5,
+        "categorie":"Мясные",
+        "name":"Маринера",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"           
+    },
+    {
+        "id":6,
+        "categorie":"Мясные",
+        "name":"Классик Пепперони",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/1e1a6e80-b3ba-4a44-b6b9-beae5b1fbf27.jpg"           
+    },
+    {
+        "id":7,
+        "categorie":"Мясные",
+        "name":"Вестерн Барбекю",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d2e337e9-e07a-4199-9cc1-501cc44cb8f8.jpg"           
+    },
+    {
+        "id":8,
+        "categorie":"Мясные",
+        "name":"Мясная",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg"           
+    },  
+    {
+        "id":9,
+        "categorie":"Вегетерианские",
+        "name":"Вегетарианская",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/ec29465e-606b-4a04-a03e-da3940d37e0e.jpg"           
+    },  
+    {
+        "id":10,
+        "categorie":"Вегетерианские",
+        "name":"Греческая",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/30367198-f3bd-44ed-9314-6f717960da07.jpg"           
+    },  
+    {
+        "id":11,
+        "categorie":"Вегетерианские",
+        "name":"Острая Вегетарианская",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"           
+    },  
+    {
+        "id":12,
+        "categorie":"Острые",
+        "name":"Хот энд Спайси",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"           
+    },  
+    {
+        "id":13,
+        "categorie":"Острые",
+        "name":"Острый Чикен Рэнч",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"           
+    },  
+    {
+        "id":14,
+        "categorie":"Острые",
+        "name":"Американ Хот",
+        "price":"от 13 AZN",
+        "traditional":true,
+        "thin":false,
+        "size":{
+            "small":"26 см.",
+            "medium":"30 см.",
+            "big":"40 см."
+        },
+        "img":"https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"           
+    }       
+]
