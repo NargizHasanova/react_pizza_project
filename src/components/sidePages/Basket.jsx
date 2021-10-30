@@ -130,9 +130,9 @@ export default function Basket() {
                                         strokeLinejoin="round"
                                     />
                                 </svg>
-                                <Link to="/">
+                                <p>
                                     <span>Вернуться назад</span>
-                                </Link>
+                                </p>
                             </Link>
                             <button
                                 className={classNames('button', 'pay-btn', 'button--outline')}

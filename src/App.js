@@ -7,9 +7,11 @@ import Basket from './components/sidePages/Basket';
 import './scss/app.scss'
 
 
+
 function App() {
 
   return (
+
     <BrowserRouter>
       <div className="wrapper">
         <Route exact path="/"><Header /><Main /></Route>

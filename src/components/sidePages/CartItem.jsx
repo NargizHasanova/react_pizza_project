@@ -1,35 +1,29 @@
 import classNames from "classnames"
 import { useContext, useState } from "react"
-import { AddToBasketContext, BasketContext, CounterContext, DataContext } from "../../Context"
+import { AddToBasketContext, BasketContext, CounterContext, DataContext, FirstPriceContext } from "../../Context"
 
 
 
 function CartItem() {
     const [stopPriceDecrease, setStopPriceDecrease] = useState(true)
-    const { sizeSelect, setSizeSelect } = useContext(CounterContext)
     const { addToBasket, setAddToBasket } = useContext(AddToBasketContext)
     const { getData, setGetData } = useContext(DataContext)
+    const { firstPrice, setFirstPrice } = useContext(FirstPriceContext)
 
-
-    const sum = addToBasket.reduce((acc, item) => {
-        return acc + item.price
-    }, 0)
-    console.log(sum)
-
-    function increasePizzaItem(id) {
+    function increasePizzaItem(id, price) {
+        // setFirstPrice(oldArr => [...oldArr, price])
         setGetData(getData.map(item => {
             if (item.id === id) {
                 item.count = item.count + 1
-                if (item.count > 1) {
-                    item.price = item.price * 2
-                }
+                item.price = item.price + firstPrice
                 setStopPriceDecrease(true)
             }
             return item
         }))
     }
-
-    function decreasePizzaItem(id) {
+    console.log(firstPrice)
+    function decreasePizzaItem(id, price) {
+        // setFirstPrice(oldArr => [...oldArr, price])
         setGetData(getData.map(item => {
             if (item.id === id) {
                 if (item.count > 1) {
@@ -40,7 +34,7 @@ function CartItem() {
                     setStopPriceDecrease(false)
                 }
                 if (stopPriceDecrease === true) {
-                    item.price = item.price / 2
+                    item.price = item.price - firstPrice
                 }
             }
             return item
@@ -71,7 +65,7 @@ function CartItem() {
         addToBasket.map(item => {
             const { id, img, count, name, crust, size, price, sizeSelect } = item
             return (
-                <div className="cart__item">
+                <div key={id} className="cart__item">
                     <div className="cart-up-desc">
                         <div className="cart__item-img">
                             <img
@@ -90,7 +84,7 @@ function CartItem() {
                     <div className="mobile--block">
                         <div className="cart__item-count">
                             <div
-                                onClick={() => decreasePizzaItem(id)}
+                                onClick={() => decreasePizzaItem(id, price)}
                                 className="button button--outline button--circle cart__item-count-minus">
                                 <svg
                                     width="10"
@@ -110,7 +104,7 @@ function CartItem() {
                             </div>
                             <b>{count}</b>
                             <div
-                                onClick={() => increasePizzaItem(id)}
+                                onClick={() => increasePizzaItem(id, price)}
                                 className="button button--outline button--circle cart__item-count-plus">
                                 <svg
                                     width="10"

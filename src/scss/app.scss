@@ -419,6 +419,10 @@
     width: 60%;
     justify-content: flex-start;
   }
+
+  .popup-content {
+    width: 48%;
+  }
 }
 
 @media (max-width:425px) {
@@ -509,5 +513,26 @@
 
   .cart__item-info {
     width: 60%;
+  }
+
+  .popup-content {
+    width: 79%;
+  }
+
+  .box {
+    padding: 17px 16px 7px;
+  }
+
+  .button--cart {
+    width: 172px;
+    margin-left: 5px;
+  }
+
+  .sign {
+    margin-left: -10px;
+  }
+
+  .header .container {
+    padding-top: 10px;
   }
 }

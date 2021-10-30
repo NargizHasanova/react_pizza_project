@@ -33,7 +33,7 @@ export default function HeaderBtm() {
 
   return (
     <div className="content__top">
-      <div className="categories">
+      <nav className="categories">
         <ul>
           <li className={activeCategorie === null ? "active" : ""} onClick={selectAllCategorie}>Все</li>
           {allCategories.map((item, index) => {
@@ -50,7 +50,7 @@ export default function HeaderBtm() {
             )
           })}
         </ul>
-      </div>
+      </nav>
       <SortPopUp />
     </div>
 

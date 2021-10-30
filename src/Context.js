@@ -6,6 +6,7 @@ export const LoadContext = createContext()
 export const BasketContext = createContext()
 export const CounterContext = createContext()
 export const AddToBasketContext = createContext()
+export const FirstPriceContext = createContext()
 
 
 export default function Context({ children }) {
@@ -14,6 +15,7 @@ export default function Context({ children }) {
     const [basket, setBasket] = useState(false)
     const [sizeSelect, setSizeSelect] = useState(0)
     const [addToBasket, setAddToBasket] = useState([])
+    const [firstPrice, setFirstPrice] = useState(0)
 
     async function fetchData() {
         try {
@@ -38,7 +40,9 @@ export default function Context({ children }) {
                 <BasketContext.Provider value={{ basket, setBasket }}>
                     <CounterContext.Provider value={{ sizeSelect, setSizeSelect }}>
                         <AddToBasketContext.Provider value={{ addToBasket, setAddToBasket }}>
-                            {children}
+                            <FirstPriceContext.Provider value={{ firstPrice, setFirstPrice }}>
+                                {children}
+                            </FirstPriceContext.Provider>
                         </AddToBasketContext.Provider>
                     </CounterContext.Provider>
                 </BasketContext.Provider>

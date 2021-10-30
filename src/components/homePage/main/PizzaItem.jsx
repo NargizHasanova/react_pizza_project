@@ -1,15 +1,14 @@
 import classNames from 'classnames'
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { AddToBasketContext, BasketContext, CounterContext, DataContext } from '../../../Context'
-import { useTranslation } from 'react-i18next';
+import { AddToBasketContext, BasketContext, CounterContext, DataContext, FirstPriceContext } from '../../../Context'
 
 export default function PizzaItem() {
     const { getData, setGetData } = useContext(DataContext)
     const { basket, setBasket } = useContext(BasketContext)
     const { addToBasket, setAddToBasket } = useContext(AddToBasketContext)
     const { sizeSelect, setSizeSelect } = useContext(CounterContext)
-    const { t, i18n } = useTranslation();
+    const { firstPrice, setFirstPrice } = useContext(FirstPriceContext)
 
     function activateCrust(id) {
         setGetData(
@@ -77,12 +76,17 @@ export default function PizzaItem() {
     }
 
     function increase(id, element) {
+        // setFirstPrice(oldArr => [...oldArr, element.price])
+
         setGetData(
             getData.map(item => {
                 if (item.id === id) {
                     item.count = item.count + 1
+                    if (item.count === 1) {
+                        setFirstPrice(element.price)
+                    }
                     if (item.count > 1) {
-                        item.price = item.price * 2
+                        item.price = item.price + firstPrice
                     }
                     setAddToBasket(oldArr => [...new Set([...oldArr, element])])
                 }
@@ -90,8 +94,8 @@ export default function PizzaItem() {
             })
         )
         setBasket(true)
-    }
 
+    }
     return (
         getData.map(item => {
             const { img, name, count, size, sizeSelect, price, id, original, thin, crust } = item
@@ -136,7 +140,7 @@ export default function PizzaItem() {
                             </svg>
                         </Link>
                         {count > 0 && <i className="basket-counter">{count}</i>}
-                        <h4 className="pizza-block__title">{t('name')}</h4>
+                        <h4 className="pizza-block__title">{name}</h4>
                     </div>
                     <div className="pizza-block__selector">
                         <ul>
