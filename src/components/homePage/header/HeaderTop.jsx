@@ -1,58 +1,64 @@
-import { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { AddToBasketContext, FirstPriceContext } from '../../../Context'
-import HeaderLogo from './HeaderLogo'
-import Popup from 'reactjs-popup';
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { AddToBasketContext, FirstPriceContext } from "../../../Context";
+import HeaderLogo from "./HeaderLogo";
+import Popup from "reactjs-popup";
 import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import axios from 'axios';
+import { Axios } from "service";
 
 const schema = yup.object().shape({
-  email: yup.string()
-    .email('email is not valid')
-    .required('Email is required'),
-  password: yup.string()
-    .min(4, 'Password must be at least 4 characters')
-    .required('Password is required'),
-  confirmPassword: yup.string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match')
-    .required('Confirm Password is required'),
-  acceptTerms: yup.bool()
-    .oneOf([true], 'Accept Ts & Cs is required')
+  email: yup.string().email("email is not valid").required("Email is required"),
+  password: yup
+    .string()
+    .min(4, "Password must be at least 4 characters")
+    .required("Password is required"),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match")
+    .required("Confirm Password is required"),
+  acceptTerms: yup.bool().oneOf([true], "Accept Ts & Cs is required"),
 });
 
-
-
 export default function HeaderTop() {
-  const { addToBasket, setAddToBasket } = useContext(AddToBasketContext)
-  const [signForm, setSignForm] = useState(true)
-  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
-
+  const { addToBasket, setAddToBasket } = useContext(AddToBasketContext);
+  const [signForm, setSignForm] = useState(true);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
   const pizzaPriceSum = addToBasket.reduce((acc, item) => {
-    return acc + item.price
-  }, 0)
+    return acc + item.price * item.count;
+  }, 0);
   const pizzaCountSum = addToBasket.reduce((acc, item) => {
-    return acc + item.count
-  }, 0)
+    return acc + item.count;
+  }, 0);
 
   function signIn() {
-    setSignForm(true)
+    setSignForm(true);
   }
 
   function signUp() {
-    setSignForm(false)
+    setSignForm(false);
   }
 
   const registForm = (data) => {
-    console.log(data)
-    axios.post('https://test-002-3ddc6-default-rtdb.firebaseio.com/pizzaUsersRegistrForm.json', data)
-  }
+    console.log(data);
+    Axios.post(
+      "https://test-002-3ddc6-default-rtdb.firebaseio.com/pizzaUsersRegistrForm.json",
+      data
+    );
+  };
   const loginForm = (data) => {
-    console.log(data)
-    axios.post('https://test-002-3ddc6-default-rtdb.firebaseio.com/pizzaUsersLoginForm.json', data)
-  }
+    console.log(data);
+    Axios.post(
+      "https://test-002-3ddc6-default-rtdb.firebaseio.com/pizzaUsersLoginForm.json",
+      data
+    );
+  };
 
   return (
     <div className="header">
@@ -70,7 +76,7 @@ export default function HeaderTop() {
             modal
             nested
           >
-            {close => (
+            {(close) => (
               <div className="modal">
                 <button className="close" onClick={close}>
                   &times;
@@ -80,93 +86,145 @@ export default function HeaderTop() {
                     <div className="logmod__wrapper">
                       <div className="logmod__container">
                         <ul className="logmod__tabs">
-                          {signForm && <li data-tabtar="lgm-2"><a href="#">Вход</a></li>}
-                          {!signForm && <li data-tabtar="lgm-1"><a href="#">Регистрация</a></li>}
+                          {signForm && (
+                            <li data-tabtar="lgm-2">
+                              <a href="#">Вход</a>
+                            </li>
+                          )}
+                          {!signForm && (
+                            <li data-tabtar="lgm-1">
+                              <a href="#">Регистрация</a>
+                            </li>
+                          )}
                         </ul>
                         <div className="logmod__tab-wrapper">
-                          {!signForm &&
+                          {!signForm && (
                             <div className="logmod__tab lgm-1">
                               <div className="logmod__heading">
-                                <span className="logmod__heading-subtitle">Введите свои данные <strong>для регистрации</strong></span>
+                                <span className="logmod__heading-subtitle">
+                                  Введите свои данные{" "}
+                                  <strong>для регистрации</strong>
+                                </span>
                               </div>
                               <div className="logmod__form">
                                 {/* ============first form============ */}
-                                <form onSubmit={handleSubmit(registForm)}
-                                  className="simform">
+                                <form
+                                  onSubmit={handleSubmit(registForm)}
+                                  className="simform"
+                                >
                                   <div className="sminputs">
                                     <div className="input full">
-                                      <label className="string optional" htmlFor="user-name">
-                                        <span className="span-asterisk">Email<i className="fas fa-asterisk"></i>
+                                      <label
+                                        className="string optional"
+                                        htmlFor="user-name"
+                                      >
+                                        <span className="span-asterisk">
+                                          Email
+                                          <i className="fas fa-asterisk"></i>
                                         </span>
                                       </label>
                                       <input
-                                        {...register('email')}
+                                        {...register("email")}
                                         className="string optional"
                                         id="user-email"
                                         placeholder="Email"
                                         type="text"
                                       />
-                                      <span className="errorMessage">{errors.email?.message}</span>
+                                      <span className="errorMessage">
+                                        {errors.email?.message}
+                                      </span>
                                     </div>
                                   </div>
                                   <div className="sminputs">
                                     <div className="input string optional">
-                                      <label className="string optional" htmlFor="user-pw">
-                                        <span className="span-asterisk">Password<i className="fas fa-asterisk"></i>
+                                      <label
+                                        className="string optional"
+                                        htmlFor="user-pw"
+                                      >
+                                        <span className="span-asterisk">
+                                          Password
+                                          <i className="fas fa-asterisk"></i>
                                         </span>
                                       </label>
                                       <input
-                                        {...register('password')}
+                                        {...register("password")}
                                         className="string optional"
                                         id="user-pw"
                                         placeholder="Password"
-                                        type="password" />
-                                      <span className="errorMessage">{errors.password?.message}</span>
+                                        type="password"
+                                      />
+                                      <span className="errorMessage">
+                                        {errors.password?.message}
+                                      </span>
                                     </div>
                                     <div className="input string optional">
-                                      <label className="string optional" htmlFor="user-pw-repeat">
-                                        <span className="span-asterisk">Repeat Password<i className="fas fa-asterisk"></i>
+                                      <label
+                                        className="string optional"
+                                        htmlFor="user-pw-repeat"
+                                      >
+                                        <span className="span-asterisk">
+                                          Repeat Password
+                                          <i className="fas fa-asterisk"></i>
                                         </span>
                                       </label>
                                       <input
-                                        {...register('confirmPassword')}
+                                        {...register("confirmPassword")}
                                         className="string optional"
                                         id="user-pw-repeat"
                                         placeholder="Repeat password"
-                                        type="password" />
-                                      <span className="errorMessage">{errors.confirmPassword?.message}</span>
+                                        type="password"
+                                      />
+                                      <span className="errorMessage">
+                                        {errors.confirmPassword?.message}
+                                      </span>
                                     </div>
                                   </div>
                                   <div className="simform__actions">
                                     <span className="simform__actions-sidetext">
                                       <input
-                                        {...register('acceptTerms')}
+                                        {...register("acceptTerms")}
                                         type="checkbox"
-                                        className="agreeTerms" />agree to <a className="special" href="/">Terms & Privacy</a>
+                                        className="agreeTerms"
+                                      />
+                                      agree to{" "}
+                                      <a className="special" href="/">
+                                        Terms & Privacy
+                                      </a>
                                     </span>
-                                    <button
-                                      className="sumbit"
-                                      type="submit">Создать
+                                    <button className="sumbit" type="submit">
+                                      Создать
                                     </button>
                                   </div>
-                                  <span className="errorAccept">{errors.acceptTerms?.message}</span>
+                                  <span className="errorAccept">
+                                    {errors.acceptTerms?.message}
+                                  </span>
                                 </form>
                               </div>
                             </div>
-                          }
-                          {signForm &&
+                          )}
+                          {signForm && (
                             <div className="logmod__tab lgm-2">
                               <div className="logmod__heading">
-                                <span className="logmod__heading-subtitle">Введите свой email и пароль <strong>для входа</strong></span>
+                                <span className="logmod__heading-subtitle">
+                                  Введите свой email и пароль{" "}
+                                  <strong>для входа</strong>
+                                </span>
                               </div>
                               <div className="logmod__form">
                                 {/*================ second form================== */}
-                                <form onSubmit={handleSubmit(loginForm)}
-                                  className="simform">
+                                <form
+                                  onSubmit={handleSubmit(loginForm)}
+                                  className="simform"
+                                >
                                   <div className="sminputs">
                                     <div className="input full">
-                                      <label className="string optional" htmlFor="user-name">
-                                        <span className="span-asterisk">Email<i className="fas fa-asterisk"></i>
+                                      <label
+                                        className="string optional"
+                                        htmlFor="user-name"
+                                      >
+                                        <span className="span-asterisk">
+                                          Email
+                                          <i className="fas fa-asterisk"></i>
                                         </span>
                                       </label>
                                       <input
@@ -174,15 +232,22 @@ export default function HeaderTop() {
                                         id="user-email"
                                         placeholder="Email.."
                                         type="text"
-                                        {...register('email')}
+                                        {...register("email")}
                                       />
-                                      <span className="errorMessage">{errors.email?.message}</span>
+                                      <span className="errorMessage">
+                                        {errors.email?.message}
+                                      </span>
                                     </div>
                                   </div>
                                   <div className="sminputs">
                                     <div className="input full">
-                                      <label className="string optional" htmlFor="user-pw">
-                                        <span className="span-asterisk">Password<i className="fas fa-asterisk"></i>
+                                      <label
+                                        className="string optional"
+                                        htmlFor="user-pw"
+                                      >
+                                        <span className="span-asterisk">
+                                          Password
+                                          <i className="fas fa-asterisk"></i>
                                         </span>
                                       </label>
                                       <input
@@ -191,25 +256,30 @@ export default function HeaderTop() {
                                         size="50"
                                         placeholder="пароль.."
                                         type="password"
-                                        {...register('password')} />
-                                      <span className="errorMessage">{errors.password?.message}</span>
-                                      <span className="hide-password">Show</span>
+                                        {...register("password")}
+                                      />
+                                      <span className="errorMessage">
+                                        {errors.password?.message}
+                                      </span>
+                                      <span className="hide-password">
+                                        Show
+                                      </span>
                                     </div>
                                   </div>
                                   <div className="simform__actions">
                                     <span className="simform__actions-sidetext">
-                                      <a className="special" href="/">Forgot your password?</a>
+                                      <a className="special" href="/">
+                                        Forgot your password?
+                                      </a>
                                     </span>
-                                    <button
-                                      className="sumbit"
-                                      type="submit"
-                                    >Войти
+                                    <button className="sumbit" type="submit">
+                                      Войти
                                     </button>
                                   </div>
                                 </form>
                               </div>
                             </div>
-                          }
+                          )}
                         </div>
                       </div>
                     </div>
@@ -262,5 +332,5 @@ export default function HeaderTop() {
         </div>
       </div>
     </div>
-  )
+  );
 }
