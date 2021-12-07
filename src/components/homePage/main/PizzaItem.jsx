@@ -7,7 +7,6 @@ import {
   BasketContext,
   CounterContext,
   DataContext,
-  FirstPriceContext,
 } from "../../../Context";
 
 export default function PizzaItem() {
@@ -15,7 +14,7 @@ export default function PizzaItem() {
   const { basket, setBasket } = useContext(BasketContext);
   const { addToBasket, setAddToBasket } = useContext(AddToBasketContext);
   const { sizeSelect, setSizeSelect } = useContext(CounterContext);
-  const { firstPrice, setFirstPrice } = useContext(FirstPriceContext);
+  
 
   function activateCrust(id) {
     setGetData(
@@ -84,20 +83,13 @@ export default function PizzaItem() {
   }
 
   function increase(id, element) {
-    // setFirstPrice(oldArr => [...oldArr, element.price])
-    console.log(id, element, "-----");
     setGetData(
       getData.map((item) => {
         if (item.id === id) {
-          item.count += 1;
-          if (item.count === 1) {
-            setFirstPrice(element.price);
-          }
+          item.count += 1;         
           if (item.count > 1) {
-            //item.price = item.price + firstPrice;
             item.totalPrice = item.count * item.price;
           }
-
           setAddToBasket((oldArr) => [...new Set([...oldArr, element])]);
         }
         return item;

@@ -1,14 +1,12 @@
 import { useContext, useState } from "react";
-
 import { Axios } from "../../../service";
-
 import { DataContext, LoadContext } from "../../../Context";
 import SortPopUp from "../../sidePages/SortPopUp";
 
 export default function HeaderBtm() {
-  const { getData, setGetData } = useContext(DataContext);
-  const { load, setLoad } = useContext(LoadContext);
-  const [activeCategorie, setActiveCategorie] = useState(null);
+  const { setGetData } = useContext(DataContext);
+  const { setLoad } = useContext(LoadContext);
+  const [ activeCategorie, setActiveCategorie ] = useState(null);
 
   // const allCategories = [...new Set(getData.map(item => item.categorie))]
   const allCategories = ["Мясные", "Куриные", "Вегетерианские", "Острые"];
@@ -20,16 +18,16 @@ export default function HeaderBtm() {
 
   async function filterCategorie(categorieName) {
     const { data } = await Axios.get("/pizza.json");
-
-    const filtered = data.filter((item) => item.categorie === categorieName);
+    const myData = data.map((item) => ({ ...item, totalPrice: 0 }))
+    const filtered = myData.filter((item) => item.categorie === categorieName);
     setGetData(filtered);
   }
 
   async function selectAllCategorie() {
     setActiveCategorie(null);
     const { data } = await Axios.get("/pizza.json");
-    setGetData(data);
-    setLoad(false);
+    const myData = data.map((item) => ({ ...item, totalPrice: 0 }))
+    setGetData(myData);
   }
 
   return (

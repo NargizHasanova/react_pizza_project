@@ -356,6 +356,14 @@
 }
 
 @media (max-width:768px) {
+  .box {
+    width: 43%;
+  }
+
+  .header .header__cart {
+    width: 50%;
+  }
+
   .content__top {
     flex-direction: column;
     align-items: flex-start;
@@ -426,6 +434,14 @@
 }
 
 @media (max-width:425px) {
+  .header .header__cart {
+    width: 77%;
+  }
+
+  .box {
+    width: 20%;
+  }
+
   .categories {
     display: none;
   }
@@ -524,15 +540,18 @@
   }
 
   .button--cart {
-    width: 172px;
+    width: 153px;
     margin-left: 5px;
+    padding: 8px 10px;
   }
 
   .sign {
-    margin-left: -10px;
+    margin-left: -18px;
   }
 
   .header .container {
     padding-top: 10px;
   }
+
+
 }

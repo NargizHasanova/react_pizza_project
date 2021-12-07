@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { AddToBasketContext, FirstPriceContext } from "../../../Context";
+import { AddToBasketContext } from "../../../Context";
 import HeaderLogo from "./HeaderLogo";
 import Popup from "reactjs-popup";
 import { useForm } from "react-hook-form";
@@ -22,7 +22,7 @@ const schema = yup.object().shape({
 });
 
 export default function HeaderTop() {
-  const { addToBasket, setAddToBasket } = useContext(AddToBasketContext);
+  const { addToBasket } = useContext(AddToBasketContext);
   const [signForm, setSignForm] = useState(true);
   const {
     register,
@@ -48,14 +48,15 @@ export default function HeaderTop() {
   const registForm = (data) => {
     console.log(data);
     Axios.post(
-      "https://test-002-3ddc6-default-rtdb.firebaseio.com/pizzaUsersRegistrForm.json",
+      "https://test-003-69327-default-rtdb.firebaseio.com/pizzaUsersRegistrForm.json",
       data
     );
   };
+
   const loginForm = (data) => {
     console.log(data);
     Axios.post(
-      "https://test-002-3ddc6-default-rtdb.firebaseio.com/pizzaUsersLoginForm.json",
+      "https://test-003-69327-default-rtdb.firebaseio.com/pizzaUsersLoginForm.json",
       data
     );
   };
@@ -88,12 +89,12 @@ export default function HeaderTop() {
                         <ul className="logmod__tabs">
                           {signForm && (
                             <li data-tabtar="lgm-2">
-                              <a href="#">Вход</a>
+                              <a href="/">Вход</a>
                             </li>
                           )}
                           {!signForm && (
                             <li data-tabtar="lgm-1">
-                              <a href="#">Регистрация</a>
+                              <a href="/">Регистрация</a>
                             </li>
                           )}
                         </ul>
@@ -107,7 +108,7 @@ export default function HeaderTop() {
                                 </span>
                               </div>
                               <div className="logmod__form">
-                                {/* ============first form============ */}
+                                {/* ============ first form ============ */}
                                 <form
                                   onSubmit={handleSubmit(registForm)}
                                   className="simform"

@@ -1,53 +1,30 @@
 import classNames from "classnames";
 import { useContext, useState } from "react";
-import {
-  AddToBasketContext,
-  BasketContext,
-  CounterContext,
-  DataContext,
-  FirstPriceContext,
-} from "../../Context";
+import { AddToBasketContext, DataContext } from "../../Context";
 
 function CartItem() {
-  const [stopPriceDecrease, setStopPriceDecrease] = useState(true);
   const { addToBasket, setAddToBasket } = useContext(AddToBasketContext);
   const { getData, setGetData } = useContext(DataContext);
-  const { firstPrice, setFirstPrice } = useContext(FirstPriceContext);
 
-  function increasePizzaItem(id, price) {
-    // setFirstPrice(oldArr => [...oldArr, price])
+  function increasePizzaItem(id) {
     setGetData(
       getData.map((item) => {
         if (item.id === id) {
           item.count = item.count + 1;
           item.totalPrice = item.price * item.count;
-          setStopPriceDecrease(true);
         }
         return item;
       })
     );
   }
-  function decreasePizzaItem(id, price) {
-    // setFirstPrice(oldArr => [...oldArr, price])
-
+  function decreasePizzaItem(id) {
     setGetData(
       getData.map((item) => {
         if (item.id === id) {
           if (item.count > 1) {
             item.count = item.count - 1;
             item.totalPrice = item.totalPrice - item.price;
-
-            setStopPriceDecrease(true);
           }
-          //   if (item.count === 1) {
-          //     setStopPriceDecrease(false);
-
-          //     // console.log(stopPriceDecrease, "if");
-          //   }
-          //   console.log(stopPriceDecrease, "outside");
-          //   if (stopPriceDecrease) {
-          //     item.totalPrice = item.totalPrice - item.price;
-          //   }
         }
         return item;
       })
@@ -77,8 +54,8 @@ function CartItem() {
     }
   }
   return addToBasket.map((item) => {
-    const { id, img, count, name, crust, size, price, sizeSelect, totalPrice } =
-      item;
+    const { id, img, count, name, crust, size, price, sizeSelect, totalPrice } = item;
+    const totalItemPrice = totalPrice === 0 ? price : totalPrice
     return (
       <div key={id} className="cart__item">
         <div className="cart-up-desc">
@@ -97,7 +74,7 @@ function CartItem() {
                 if (count === 1) {
                   return;
                 }
-                decreasePizzaItem(id, price);
+                decreasePizzaItem(id);
               }}
               className="button button--outline button--circle cart__item-count-minus"
             >
@@ -142,7 +119,7 @@ function CartItem() {
             </div>
           </div>
           <div className="cart__item-price">
-            <b>{totalPrice} AZN</b>
+            <b>{totalItemPrice} AZN</b>
           </div>
           <div className="cart__item-remove">
             <button

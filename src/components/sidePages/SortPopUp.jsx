@@ -8,7 +8,7 @@ export default function SortPopUp() {
   const [sort, setSort] = useState("популярности");
   const [visibility, setVisibility] = useState(false);
   const { getData, setGetData } = useContext(DataContext);
-  const { load, setLoad } = useContext(LoadContext);
+  const { setLoad } = useContext(LoadContext);
   const ref = useRef();
 
   function sortSelected(e) {
@@ -29,10 +29,9 @@ export default function SortPopUp() {
         );
       case "алфавиту":
         return setGetData(
-          getData
-            .map((item) => {
-              return item;
-            })
+          getData.map((item) => {
+            return item;
+          })
             .sort((a, b) => collator.compare(a.name, b.name))
         );
 
@@ -40,7 +39,7 @@ export default function SortPopUp() {
         async function fetchData() {
           try {
             const { data } = await Axios.get(
-              "https://test-002-3ddc6-default-rtdb.firebaseio.com/pizza.json"
+              "https://test-003-69327-default-rtdb.firebaseio.com/pizza.json"
             );
 
             setGetData(data);
