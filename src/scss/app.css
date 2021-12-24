@@ -59,6 +59,10 @@ body {
   display: none;
 }
 
+.warning {
+  color: #ce0c0c;
+}
+
 a,
 span,
 p,
@@ -209,13 +213,14 @@ a {
 }
 
 .modal {
-  -webkit-animation: dropDown 0.5s alternate;
-          animation: dropDown 0.5s alternate;
+  -webkit-animation: dropDown 0.5s;
+          animation: dropDown 0.5s;
   position: relative;
   font-size: 12px;
   background-color: #fff;
-  height: 377px;
+  height: 346px;
   width: 375px;
+  top: 70px;
   border: 1px solid #e5e5e5;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -462,6 +467,7 @@ a {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  margin-top: 15px;
 }
 
 .simform__actions .sumbit {
@@ -472,7 +478,6 @@ a {
   font-weight: 700;
   font-size: 16px;
   background: #4CAF50;
-  margin-top: 28px;
 }
 
 .simform__actions-sidetext {
@@ -482,17 +487,17 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 65%;
-  padding: 0 10px;
+  width: 70%;
+  padding: 0 5px;
   margin-bottom: 2px;
   color: #8C979E;
+  position: relative;
 }
 
 .sminputs .input {
   display: block;
   position: relative;
   width: 100%;
-  height: 71px;
   padding: 11px 24px;
   border-bottom: none;
   float: left;
@@ -552,7 +557,7 @@ a {
   color: rgba(75, 89, 102, 0.85);
   border-bottom: 1px solid #eee;
   width: 100%;
-  padding-bottom: 7px;
+  padding-bottom: 4px;
 }
 
 .sminputs .hide-password {
@@ -971,7 +976,7 @@ a {
 }
 
 .errorMessage {
-  color: red;
+  color: #f44336;
 }
 
 .errorAccept {
@@ -987,9 +992,8 @@ a {
   position: absolute;
   top: 0;
   right: -10px;
-  color: red;
+  color: #f44336;
   font-size: 7px;
-  display: none;
 }
 
 .button {
@@ -1476,7 +1480,7 @@ a {
 
 .container--cart {
   max-width: 820px;
-  margin: 90px auto;
+  margin: 47px auto;
 }
 
 .container--cart .content__title {
@@ -2075,11 +2079,23 @@ a {
 }
 
 .sminputs .input.full {
-  height: 100%;
+  height: 78px;
 }
 
 .modal-height {
-  height: 443px;
+  height: 520px;
+}
+
+.sminputs .input {
+  height: 88px;
+}
+
+.acceptTermsWarning {
+  position: absolute;
+  right: 14px;
+  top: 3px;
+  font-size: 6px;
+  color: #f44336;
 }
 
 .popup-content {
@@ -2088,33 +2104,93 @@ a {
   margin-top: 0 !important;
 }
 
+.popup-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-animation: overlay 0.5s;
+          animation: overlay 0.5s;
+}
+
+.forgot-password {
+  cursor: pointer;
+}
+
+.simform__actions-sidetext {
+  position: relative;
+}
+
+.forget-password-message {
+  position: absolute;
+  bottom: 23px;
+  left: -4px;
+  width: 180px;
+  height: 71px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 5px;
+  padding: 10px;
+  visibility: hidden;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  opacity: 0;
+}
+
+.forget-password-message::before {
+  content: "";
+  border-style: solid;
+  border-width: 7px 7px 0px 7px;
+  border-color: rgba(0, 0, 0, 0.9) transparent;
+  bottom: -7px;
+  left: 5%;
+  position: absolute;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.forgot-password:hover ~ .forget-password-message {
+  visibility: visible;
+  opacity: 1;
+}
+
+.forgot-password:hover ~ .forget-password-message::before {
+  visibility: visible;
+  opacity: 1;
+}
+
 @-webkit-keyframes dropDown {
   0% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-    top: -378px;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    top: 0px;
   }
   100% {
-    -webkit-transform: translateY(200px);
-            transform: translateY(200px);
-    top: 130px;
+    top: 70px;
   }
 }
 
 @keyframes dropDown {
   0% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-    top: -378px;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+    top: 0px;
   }
   100% {
-    -webkit-transform: translateY(200px);
-            transform: translateY(200px);
-    top: 130px;
+    top: 70px;
+  }
+}
+
+@-webkit-keyframes overlay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes overlay {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=app.css.map */

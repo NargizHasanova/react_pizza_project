@@ -37,7 +37,7 @@
 
   &--cart {
     max-width: 820px;
-    margin: 90px auto;
+    margin: 47px auto;
 
     .content__title {
       margin: 0;
@@ -602,6 +602,50 @@
 .popup-overlay{
   background-color: rgba(0, 0, 0 , 0.7);
   animation:  overlay 0.5s;
+}
+.forgot-password{
+  cursor: pointer;
+}
+.simform__actions-sidetext{
+  position: relative;
+}
+
+.forget-password-message{
+  position: absolute;
+  bottom: 23px;
+  left: -4px;
+  width: 180px;
+  height: 71px;
+  color: #fff;
+  background-color: rgba(0, 0, 0 , 0.9);
+  border-radius: 5px;
+  padding: 10px;
+  visibility: hidden;
+  transition: 0.2s;
+  opacity: 0;
+  &::before{
+    content: "";
+    border-style: solid;
+    border-width: 7px 7px 0px 7px;
+    border-color: rgba(0, 0, 0, 0.9) transparent;
+    bottom: -7px;
+    left: 5%;
+    position: absolute;
+    transition: 0.2s;
+    visibility: hidden;
+    opacity: 0;
+  }
+   
+}
+.forgot-password:hover{
+  ~.forget-password-message{
+    visibility: visible;
+    opacity: 1;
+  }
+  ~.forget-password-message::before{
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 @keyframes dropDown{

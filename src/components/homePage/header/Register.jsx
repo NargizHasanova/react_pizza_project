@@ -302,10 +302,13 @@ export default function Register() {
                             </div>
                             <div className="simform__actions">
                               <span className="simform__actions-sidetext">
-                                <i class="far fa-question-circle"></i>
+                                <i class="far fa-question-circle forgot-password"></i>
                                 <a className="special" href="/">
                                   Забыли пароль?
                                 </a>
+                                <div className="forget-password-message">
+                                  На ваш email будет выслана ссылка для сброса вашего пароля
+                                </div>
                               </span>
                               <button className="sumbit" type="submit">
                                 Войти

@@ -39,7 +39,7 @@ export default function SortPopUp() {
         async function fetchData() {
           try {
             const { data } = await Axios.get(
-              "https://test-003-69327-default-rtdb.firebaseio.com/pizza.json"
+              "https://test001-f52b4-default-rtdb.firebaseio.com/pizza.json"
             );
 
             setGetData(data);
