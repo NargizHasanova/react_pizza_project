@@ -20,7 +20,7 @@ export default function Context({ children }) {
   async function fetchData() {
     try {
       const { data } = await Axios.get("/pizza.json");
-      setGetData(() => data.map((item) => ({ ...item, totalPrice: 0 })));
+      setGetData(() => data.map(item => ({ ...item, totalPrice: 0 })));
       setLoad(false);
     } catch (err) {
       console.log(err);

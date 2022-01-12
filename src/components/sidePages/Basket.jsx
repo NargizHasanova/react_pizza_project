@@ -1,10 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-
 import { AddToBasketContext, BasketContext, DataContext } from "../../Context";
 import CartItem from "./CartItem";
-
 import empty from "../../assets/img/empty-cart.png";
 
 export default function Basket() {

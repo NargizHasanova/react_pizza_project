@@ -44,6 +44,7 @@ function CartItem() {
       })
     );
   }
+  
   function addSelectedSizeToBasket(sizeSelect, size) {
     if (sizeSelect.small === true) {
       return size[0];
@@ -53,6 +54,7 @@ function CartItem() {
       return size[2];
     }
   }
+
   return addToBasket.map((item) => {
     const { id, img, count, name, crust, size, price, sizeSelect, totalPrice } = item;
     const totalItemPrice = totalPrice === 0 ? price : totalPrice

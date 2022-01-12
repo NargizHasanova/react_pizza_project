@@ -14,7 +14,6 @@ export default function PizzaItem() {
   const { basket, setBasket } = useContext(BasketContext);
   const { addToBasket, setAddToBasket } = useContext(AddToBasketContext);
   const { sizeSelect, setSizeSelect } = useContext(CounterContext);
-  
 
   function activateCrust(id) {
     setGetData(
@@ -86,7 +85,7 @@ export default function PizzaItem() {
     setGetData(
       getData.map((item) => {
         if (item.id === id) {
-          item.count += 1;         
+          item.count += 1;
           if (item.count > 1) {
             item.totalPrice = item.count * item.price;
           }
@@ -98,19 +97,7 @@ export default function PizzaItem() {
     setBasket(true);
   }
   return getData.map((item) => {
-    const {
-      img,
-      name,
-      count,
-      size,
-      sizeSelect,
-      price,
-      id,
-      original,
-      thin,
-      crust,
-    } = item;
-
+    const { img, name, count, size, sizeSelect, price, id, original, thin, crust } = item;
     const totalPrice = item.totalPrice === 0 ? price : item.totalPrice;
 
     return (
