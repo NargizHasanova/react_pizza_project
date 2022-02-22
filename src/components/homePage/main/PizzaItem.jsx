@@ -98,7 +98,8 @@ export default function PizzaItem() {
   }
   return getData.map((item) => {
     const { img, name, count, size, sizeSelect, price, id, original, thin, crust } = item;
-    const totalPrice = item.totalPrice === 0 ? price : item.totalPrice;
+    //const totalPrice = item.totalPrice === 0 ? price : item.totalPrice;
+    const totalPrice = item.totalPrice || price ;
 
     return (
       <div key={id} className="pizza-block">

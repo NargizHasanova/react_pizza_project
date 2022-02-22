@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Axios = axios.create({
-  baseURL: "https://test001-f52b4-default-rtdb.firebaseio.com",
+  baseURL: "https://test-003-6b46f-default-rtdb.firebaseio.com",
 });
 
 
